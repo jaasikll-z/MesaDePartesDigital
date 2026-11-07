@@ -136,7 +136,9 @@
             Controls.Add(btnRegistrar);
             Controls.Add(lblTitulo);
             Name = "FrmMenuPrincipal";
-            Text = "FrmMenuPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Mesa de partes digital";
+            FormClosing += FrmMenuPrincipal_FormClosing;
             msMenuPrincipal.ResumeLayout(false);
             msMenuPrincipal.PerformLayout();
             ResumeLayout(false);

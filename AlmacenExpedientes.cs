@@ -18,6 +18,17 @@ namespace MesaDePartesDigital
 
         private static string rutaArchivo = "expedientes.txt";
 
+        internal static int ExtraerNumero(string texto)
+        {
+            string limpio = texto.Trim().ToUpper().Replace("EXP-", "");
+            int numero;
+            if (int.TryParse(limpio, out numero))
+            {
+                return numero;
+            }
+            return -1;
+        }
+
         internal static void Cargar()
         {
             cantidad = 0;
