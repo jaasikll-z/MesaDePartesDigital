@@ -29,6 +29,18 @@ namespace MesaDePartesDigital
             return -1;
         }
 
+        internal static int BuscarIndice(string codigo)
+        {
+            for (int i = 0; i < cantidad; i++)
+            {
+                if (codigos[i].Equals(codigo, StringComparison.OrdinalIgnoreCase))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
         internal static void Cargar()
         {
             cantidad = 0;

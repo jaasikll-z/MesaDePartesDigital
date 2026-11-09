@@ -1,1 +1,3 @@
-﻿
+﻿EXP-001|María Elena Torres Gómez|Solicitud de matrícula|18/10/2026|Solicitud de vacante para aula de 4 años - Nivel Inicial.
+EXP-002|Juan Carlos Ramos Torres|Constancia de estudios|18/10/2026|Solicitud de constancia de estudios para la postulación a la Beca 18.
+EXP-003|Carmen Juana Castro Ríos|Justificación de inasistencia|18/10/2026|Justificación de inasistencia por motivos de salud.
