@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+using System;
 using System.Windows.Forms;
 
 namespace MesaDePartesDigital
@@ -33,6 +28,7 @@ namespace MesaDePartesDigital
             FrmConsultar formulario = new FrmConsultar();
             formulario.ShowDialog();
         }
+
 
         private void itemGuardar_Click(object sender, EventArgs e)
         {

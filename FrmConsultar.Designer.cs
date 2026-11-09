@@ -1,4 +1,4 @@
-﻿namespace MesaDePartesDigital
+namespace MesaDePartesDigital
 {
     partial class FrmConsultar
     {
@@ -34,8 +34,8 @@
             colTipo = new DataGridViewTextBoxColumn();
             colFecha = new DataGridViewTextBoxColumn();
             colMotivo = new DataGridViewTextBoxColumn();
-            lblTitulo = new Label();
             btnVolver = new Button();
+            lblTitulo = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvExpedientes).BeginInit();
             SuspendLayout();
             // 
@@ -47,12 +47,12 @@
             dgvExpedientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvExpedientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvExpedientes.Columns.AddRange(new DataGridViewColumn[] { colCodigo, colSolicitante, colTipo, colFecha, colMotivo });
-            dgvExpedientes.Location = new Point(22, 95);
+            dgvExpedientes.Location = new Point(22, 72);
             dgvExpedientes.Name = "dgvExpedientes";
             dgvExpedientes.ReadOnly = true;
             dgvExpedientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvExpedientes.Size = new Size(620, 260);
-            dgvExpedientes.TabIndex = 2;
+            dgvExpedientes.TabIndex = 1;
             // 
             // colCodigo
             // 
@@ -89,36 +89,42 @@
             colMotivo.Name = "colMotivo";
             colMotivo.ReadOnly = true;
             // 
+            // btnVolver
+            // 
+            btnVolver.BackColor = Color.CornflowerBlue;
+            btnVolver.Font = new Font("Rockwell", 11.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            btnVolver.ForeColor = SystemColors.Info;
+            btnVolver.Location = new Point(428, 351);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(214, 38);
+            btnVolver.TabIndex = 3;
+            btnVolver.Text = "Volver al menú principal";
+            btnVolver.UseVisualStyleBackColor = false;
+            btnVolver.Click += btnVolver_Click;
+            // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(138, 30);
+            lblTitulo.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = SystemColors.HotTrack;
+            lblTitulo.Location = new Point(144, 26);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(390, 30);
-            lblTitulo.TabIndex = 16;
+            lblTitulo.Size = new Size(382, 22);
+            lblTitulo.TabIndex = 0;
             lblTitulo.Text = "LISTA DE EXPEDIENTES REGISTRADOS";
-            // 
-            // btnVolver
-            // 
-            btnVolver.Location = new Point(215, 378);
-            btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(214, 46);
-            btnVolver.TabIndex = 17;
-            btnVolver.Text = "Volver Atrás";
-            btnVolver.UseVisualStyleBackColor = true;
-            btnVolver.Click += btnVolver_Click;
             // 
             // FrmConsultar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(664, 450);
-            Controls.Add(btnVolver);
+            BackColor = SystemColors.Info;
+            ClientSize = new Size(666, 413);
             Controls.Add(lblTitulo);
+            Controls.Add(btnVolver);
             Controls.Add(dgvExpedientes);
             Name = "FrmConsultar";
-            Text = "FrmConsultar";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Consultar expedientes";
             Load += FrmConsultar_Load;
             ((System.ComponentModel.ISupportInitialize)dgvExpedientes).EndInit();
             ResumeLayout(false);
@@ -126,14 +132,13 @@
         }
 
         #endregion
-
         private DataGridView dgvExpedientes;
         private DataGridViewTextBoxColumn colCodigo;
         private DataGridViewTextBoxColumn colSolicitante;
         private DataGridViewTextBoxColumn colTipo;
         private DataGridViewTextBoxColumn colFecha;
         private DataGridViewTextBoxColumn colMotivo;
-        private Label lblTitulo;
         private Button btnVolver;
+        private Label lblTitulo;
     }
 }

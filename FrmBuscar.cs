@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace MesaDePartesDigital
@@ -26,7 +22,7 @@ namespace MesaDePartesDigital
             {
                 return false;
             }
-
+            
             int numero;
             if (!int.TryParse(codigo.Substring(4), out numero) || numero <= 0)
             {

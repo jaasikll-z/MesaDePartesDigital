@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace MesaDePartesDigital
@@ -71,10 +67,10 @@ namespace MesaDePartesDigital
             if (AlmacenExpedientes.cantidad >= AlmacenExpedientes.MAX)
             {
                 MessageBox.Show(
-                    "Error: Capacidad máxima de almacenamiento alcanzada (" +
-                    AlmacenExpedientes.MAX +
-                    " registros).", "Aviso",
-                    MessageBoxButtons.OK,
+                    "Error: Capacidad máxima de almacenamiento alcanzada (" + 
+                    AlmacenExpedientes.MAX + 
+                    " registros).", "Aviso", 
+                    MessageBoxButtons.OK, 
                     MessageBoxIcon.Warning);
                 return;
             }
@@ -104,17 +100,17 @@ namespace MesaDePartesDigital
             LimpiarCampos();
         }
 
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            LimpiarCampos();
-        }
-
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             if (ValidarDatos())
             {
                 RegistrarExpediente();
             }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)

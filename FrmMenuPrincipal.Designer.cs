@@ -1,14 +1,14 @@
-﻿namespace MesaDePartesDigital
+namespace MesaDePartesDigital
 {
     partial class FrmMenuPrincipal
     {
         /// <summary>
-        /// Required designer variable.
+        ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        ///  Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -23,12 +23,11 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            lblTitulo = new Label();
             btnRegistrar = new Button();
             btnBuscar = new Button();
             btnConsultar = new Button();
@@ -38,47 +37,47 @@
             itemSalir = new ToolStripMenuItem();
             menuAyuda = new ToolStripMenuItem();
             itemAcercaDe = new ToolStripMenuItem();
+            lblTitulo = new Label();
             msMenuPrincipal.SuspendLayout();
             SuspendLayout();
             // 
-            // lblTitulo
-            // 
-            lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(69, 60);
-            lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(272, 30);
-            lblTitulo.TabIndex = 0;
-            lblTitulo.Text = "MESA DE PARTES DIGITAL";
-            // 
             // btnRegistrar
             // 
-            btnRegistrar.Location = new Point(18, 160);
+            btnRegistrar.BackColor = Color.CornflowerBlue;
+            btnRegistrar.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold);
+            btnRegistrar.ForeColor = SystemColors.Info;
+            btnRegistrar.Location = new Point(54, 151);
             btnRegistrar.Name = "btnRegistrar";
-            btnRegistrar.Size = new Size(106, 66);
+            btnRegistrar.Size = new Size(300, 45);
             btnRegistrar.TabIndex = 1;
-            btnRegistrar.Text = "Registrar";
-            btnRegistrar.UseVisualStyleBackColor = true;
+            btnRegistrar.Text = "Registrar expediente";
+            btnRegistrar.UseVisualStyleBackColor = false;
             btnRegistrar.Click += btnRegistrar_Click;
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(156, 160);
+            btnBuscar.BackColor = Color.CornflowerBlue;
+            btnBuscar.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold);
+            btnBuscar.ForeColor = SystemColors.Info;
+            btnBuscar.Location = new Point(54, 215);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(106, 66);
+            btnBuscar.Size = new Size(300, 45);
             btnBuscar.TabIndex = 2;
-            btnBuscar.Text = "Buscar";
-            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Text = "Buscar expediente";
+            btnBuscar.UseVisualStyleBackColor = false;
             btnBuscar.Click += btnBuscar_Click;
             // 
             // btnConsultar
             // 
-            btnConsultar.Location = new Point(295, 160);
+            btnConsultar.BackColor = Color.CornflowerBlue;
+            btnConsultar.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold);
+            btnConsultar.ForeColor = SystemColors.Info;
+            btnConsultar.Location = new Point(54, 278);
             btnConsultar.Name = "btnConsultar";
-            btnConsultar.Size = new Size(106, 66);
+            btnConsultar.Size = new Size(300, 45);
             btnConsultar.TabIndex = 3;
-            btnConsultar.Text = "Consultar";
-            btnConsultar.UseVisualStyleBackColor = true;
+            btnConsultar.Text = "Consultar expedientes";
+            btnConsultar.UseVisualStyleBackColor = false;
             btnConsultar.Click += btnConsultar_Click;
             // 
             // msMenuPrincipal
@@ -86,8 +85,8 @@
             msMenuPrincipal.Items.AddRange(new ToolStripItem[] { menuArchivo, menuAyuda });
             msMenuPrincipal.Location = new Point(0, 0);
             msMenuPrincipal.Name = "msMenuPrincipal";
-            msMenuPrincipal.Size = new Size(425, 24);
-            msMenuPrincipal.TabIndex = 5;
+            msMenuPrincipal.Size = new Size(414, 24);
+            msMenuPrincipal.TabIndex = 4;
             msMenuPrincipal.Text = "msMenuPrincipal";
             // 
             // menuArchivo
@@ -100,14 +99,14 @@
             // itemGuardar
             // 
             itemGuardar.Name = "itemGuardar";
-            itemGuardar.Size = new Size(180, 22);
+            itemGuardar.Size = new Size(116, 22);
             itemGuardar.Text = "Guardar";
             itemGuardar.Click += itemGuardar_Click;
             // 
             // itemSalir
             // 
             itemSalir.Name = "itemSalir";
-            itemSalir.Size = new Size(180, 22);
+            itemSalir.Size = new Size(116, 22);
             itemSalir.Text = "Salir";
             itemSalir.Click += itemSalir_Click;
             // 
@@ -121,20 +120,33 @@
             // itemAcercaDe
             // 
             itemAcercaDe.Name = "itemAcercaDe";
-            itemAcercaDe.Size = new Size(180, 22);
+            itemAcercaDe.Size = new Size(126, 22);
             itemAcercaDe.Text = "Acerca de";
             itemAcercaDe.Click += itemAcercaDe_Click;
+            // 
+            // lblTitulo
+            // 
+            lblTitulo.AutoSize = true;
+            lblTitulo.Font = new Font("Gabriola", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = SystemColors.HotTrack;
+            lblTitulo.Location = new Point(31, 50);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(352, 65);
+            lblTitulo.TabIndex = 0;
+            lblTitulo.Text = "MESA DE PARTES DIGITAL";
             // 
             // FrmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(425, 304);
-            Controls.Add(msMenuPrincipal);
+            BackColor = SystemColors.Info;
+            ClientSize = new Size(414, 375);
+            Controls.Add(lblTitulo);
             Controls.Add(btnConsultar);
             Controls.Add(btnBuscar);
             Controls.Add(btnRegistrar);
-            Controls.Add(lblTitulo);
+            Controls.Add(msMenuPrincipal);
+            MainMenuStrip = msMenuPrincipal;
             Name = "FrmMenuPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Mesa de partes digital";
@@ -146,8 +158,6 @@
         }
 
         #endregion
-
-        private Label lblTitulo;
         private Button btnRegistrar;
         private Button btnBuscar;
         private Button btnConsultar;
@@ -157,5 +167,6 @@
         private ToolStripMenuItem itemSalir;
         private ToolStripMenuItem menuAyuda;
         private ToolStripMenuItem itemAcercaDe;
+        private Label lblTitulo;
     }
 }

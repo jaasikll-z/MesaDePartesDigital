@@ -15,8 +15,12 @@ namespace MesaDePartesDigital
         internal static string[] motivos = new string[MAX];
         internal static int cantidad = 0;
         internal static bool cambiosPendientes = false;
-
         private static string rutaArchivo = "expedientes.txt";
+
+        internal static string FormatearCodigo(int numero)
+        {
+            return "EXP-" + numero.ToString("D3");
+        }
 
         internal static int ExtraerNumero(string texto)
         {
