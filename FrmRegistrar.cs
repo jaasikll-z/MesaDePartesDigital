@@ -11,49 +11,6 @@ namespace MesaDePartesDigital
             InitializeComponent();
         }
 
-        string FormatearCodigo(int numero)
-        {
-            return "EXP-" + numero.ToString("D3");
-        }
-
-        bool ValidarDatos()
-        {
-            if (string.IsNullOrWhiteSpace(textSolicitante.Text))
-            {
-                MessageBox.Show(
-                    "Debe ingresar el nombre del solicitante (padre, apoderado o entidad).",
-                    "Validación de datos",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                textSolicitante.Focus();
-                return false;
-            }
-
-            if (cmbTipoDocumento.SelectedIndex < 0)
-            {
-                MessageBox.Show(
-                    "Debe seleccionar un tipo de documento válido de la lista desplegable.",
-                    "Validación de datos",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                cmbTipoDocumento.Focus();
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(textMotivo.Text))
-            {
-                MessageBox.Show(
-                    "Debe ingresar el motivo o descripción detallada del trámite.",
-                    "Validación de datos",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                textMotivo.Focus();
-                return false;
-            }
-
-            return true;
-        }
-
         void LimpiarCampos()
         {
             textSolicitante.Clear();
@@ -85,7 +42,7 @@ namespace MesaDePartesDigital
                     mayor = num;
                 }
             }
-            string nuevoCodigo = FormatearCodigo(mayor + 1);
+            string nuevoCodigo = AlmacenExpedientes.FormatearCodigo(mayor + 1);
 
             AlmacenExpedientes.codigos[AlmacenExpedientes.cantidad] = nuevoCodigo;
             AlmacenExpedientes.solicitantes[AlmacenExpedientes.cantidad] = textSolicitante.Text.Trim();
@@ -102,7 +59,7 @@ namespace MesaDePartesDigital
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (ValidarDatos())
+            if (AlmacenExpedientes.ValidarCampos(textSolicitante.Text, cmbTipoDocumento.SelectedIndex, textMotivo.Text, this))
             {
                 RegistrarExpediente();
             }

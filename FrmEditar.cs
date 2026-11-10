@@ -33,44 +33,6 @@ namespace MesaDePartesDigital
             textMotivo.Text = AlmacenExpedientes.motivos[indice];
         }
 
-        bool ValidarDatos()
-        {
-            if (string.IsNullOrWhiteSpace(textSolicitante.Text))
-            {
-                MessageBox.Show(
-                    "Debe ingresar el nombre del solicitante (padre, apoderado o entidad).",
-                    "Validación de datos",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                textSolicitante.Focus();
-                return false;
-            }
-
-            if (cmbTipoDocumento.SelectedIndex < 0)
-            {
-                MessageBox.Show(
-                    "Debe seleccionar un tipo de documento válido de la lista desplegable.",
-                    "Validación de datos",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                cmbTipoDocumento.Focus();
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(textMotivo.Text))
-            {
-                MessageBox.Show(
-                    "Debe ingresar el motivo o descripción detallada del trámite.",
-                    "Validación de datos",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                textMotivo.Focus();
-                return false;
-            }
-
-            return true;
-        }
-
         void GuardarCambios()
         {
             AlmacenExpedientes.solicitantes[indice] = textSolicitante.Text.Trim();
@@ -90,7 +52,7 @@ namespace MesaDePartesDigital
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (ValidarDatos())
+            if (AlmacenExpedientes.ValidarCampos(textSolicitante.Text, cmbTipoDocumento.SelectedIndex, textMotivo.Text, this))
             {
                 GuardarCambios();
             }
