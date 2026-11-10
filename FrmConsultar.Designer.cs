@@ -35,6 +35,7 @@ namespace MesaDePartesDigital
             colFecha = new DataGridViewTextBoxColumn();
             colMotivo = new DataGridViewTextBoxColumn();
             btnVolver = new Button();
+            btnEditar = new Button();
             lblTitulo = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvExpedientes).BeginInit();
             SuspendLayout();
@@ -102,6 +103,19 @@ namespace MesaDePartesDigital
             btnVolver.UseVisualStyleBackColor = false;
             btnVolver.Click += btnVolver_Click;
             // 
+            // btnEditar
+            // 
+            btnEditar.BackColor = Color.CornflowerBlue;
+            btnEditar.Font = new Font("Rockwell", 11.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            btnEditar.ForeColor = SystemColors.Info;
+            btnEditar.Location = new Point(22, 351);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(180, 38);
+            btnEditar.TabIndex = 2;
+            btnEditar.Text = "Editar expediente";
+            btnEditar.UseVisualStyleBackColor = false;
+            btnEditar.Click += btnEditar_Click;
+            // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
@@ -120,6 +134,7 @@ namespace MesaDePartesDigital
             BackColor = SystemColors.Info;
             ClientSize = new Size(666, 413);
             Controls.Add(lblTitulo);
+            Controls.Add(btnEditar);
             Controls.Add(btnVolver);
             Controls.Add(dgvExpedientes);
             Name = "FrmConsultar";
@@ -138,6 +153,7 @@ namespace MesaDePartesDigital
         private DataGridViewTextBoxColumn colTipo;
         private DataGridViewTextBoxColumn colFecha;
         private DataGridViewTextBoxColumn colMotivo;
+        private Button btnEditar;
         private Button btnVolver;
         private Label lblTitulo;
     }

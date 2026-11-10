@@ -32,6 +32,28 @@ namespace MesaDePartesDigital
             CargarDatos();
         }
 
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (dgvExpedientes.CurrentRow == null || dgvExpedientes.CurrentRow.Index < 0)
+            {
+                MessageBox.Show("Por favor, seleccione un expediente de la lista.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string codigo = dgvExpedientes.CurrentRow.Cells["colCodigo"].Value?.ToString() ?? "";
+            int indice = AlmacenExpedientes.BuscarIndice(codigo);
+
+            if (indice == -1)
+            {
+                MessageBox.Show("No se encontró el expediente seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            FrmEditar formularioEditar = new FrmEditar(indice);
+            formularioEditar.ShowDialog();
+            CargarDatos();
+        }
+
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
