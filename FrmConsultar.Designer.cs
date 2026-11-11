@@ -110,7 +110,7 @@ namespace MesaDePartesDigital
             btnEditar.ForeColor = SystemColors.Info;
             btnEditar.Location = new Point(22, 351);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(180, 38);
+            btnEditar.Size = new Size(214, 38);
             btnEditar.TabIndex = 2;
             btnEditar.Text = "Editar expediente";
             btnEditar.UseVisualStyleBackColor = false;

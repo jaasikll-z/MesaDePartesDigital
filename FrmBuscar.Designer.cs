@@ -96,7 +96,7 @@ namespace MesaDePartesDigital
             btnVolver.BackColor = Color.CornflowerBlue;
             btnVolver.Font = new Font("Rockwell", 11.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
             btnVolver.ForeColor = SystemColors.Info;
-            btnVolver.Location = new Point(29, 344);
+            btnVolver.Location = new Point(157, 346);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(211, 36);
             btnVolver.TabIndex = 5;

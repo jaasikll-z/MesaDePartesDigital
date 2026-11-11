@@ -45,6 +45,48 @@ namespace MesaDePartesDigital
             return -1;
         }
 
+        internal static string NormalizarCodigo(string texto)
+        {
+            if (string.IsNullOrWhiteSpace(texto))
+                return "";
+
+            string limpio = texto.Trim().ToUpper();
+
+            // Si ingresó directamente un número (ej. "1", "01", "001")
+            if (int.TryParse(limpio, out int numSolo) && numSolo > 0)
+            {
+                return FormatearCodigo(numSolo);
+            }
+
+            // Si ingresó con prefijo EXP- o EXP (ej. "EXP-1", "exp-001", "EXP 1")
+            if (limpio.StartsWith("EXP-") || limpio.StartsWith("EXP"))
+            {
+                string soloDigitos = limpio.Replace("EXP-", "").Replace("EXP", "").Trim();
+                if (int.TryParse(soloDigitos, out int numExp) && numExp > 0)
+                {
+                    return FormatearCodigo(numExp);
+                }
+            }
+
+            return limpio;
+        }
+
+        internal static bool ValidarFormatoCodigo(string codigo)
+        {
+            if (string.IsNullOrWhiteSpace(codigo))
+            {
+                return false;
+            }
+
+            if (!codigo.StartsWith("EXP-"))
+            {
+                return false;
+            }
+
+            int numero = ExtraerNumero(codigo);
+            return numero > 0;
+        }
+
         internal static void Cargar()
         {
             cantidad = 0;

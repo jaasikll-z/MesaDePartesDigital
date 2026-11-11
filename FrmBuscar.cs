@@ -13,14 +13,24 @@ namespace MesaDePartesDigital
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string codigoBuscado = textBuscar.Text.Trim().ToUpper();
+            string textoIngresado = textBuscar.Text.Trim();
+
+            // Normalizamos la entrada (si ingresa "1" o "001" se convierte en "EXP-001")
+            string codigoBuscado = AlmacenExpedientes.NormalizarCodigo(textoIngresado);
 
             if (!AlmacenExpedientes.ValidarFormatoCodigo(codigoBuscado))
             {
                 lblDatosExpediente.Text = "Código de expediente no válido.";
-                MessageBox.Show("Debe ingresar el código completo con el formato exacto (ejemplo: EXP-001).", "Búsqueda", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Debe ingresar un número de expediente válido (ejemplos: 1, 001 o EXP-001).",
+                    "Búsqueda",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
                 return;
             }
+
+            // Actualizamos la caja de texto con el código completo formateado
+            textBuscar.Text = codigoBuscado;
 
             int posicion = AlmacenExpedientes.BuscarIndice(codigoBuscado);
 

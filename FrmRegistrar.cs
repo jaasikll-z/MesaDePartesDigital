@@ -11,12 +11,91 @@ namespace MesaDePartesDigital
             InitializeComponent();
         }
 
+        bool EsTextoValido(string texto)
+        {
+            foreach (char c in texto)
+            {
+                // Solo permitimos letras, espacios y puntos (ej. para entidades como I.E. o Lic.)
+                if (!char.IsLetter(c) && !char.IsWhiteSpace(c) && c != '.')
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        bool ValidarCamposConEtiquetas()
+        {
+            bool valido = true;
+
+            // Validación de Solicitante
+            string solicitante = textSolicitante.Text.Trim();
+            if (string.IsNullOrWhiteSpace(solicitante) || solicitante.Length < 3)
+            {
+                lblErrorSolicitante.Text = "Ingrese un nombre válido (mín. 3 letras).";
+                lblErrorSolicitante.Visible = true;
+                valido = false;
+            }
+            else if (!EsTextoValido(solicitante))
+            {
+                lblErrorSolicitante.Text = "Solo se permiten letras y espacios.";
+                lblErrorSolicitante.Visible = true;
+                valido = false;
+            }
+            else
+            {
+                lblErrorSolicitante.Visible = false;
+            }
+
+            // Validación de Tipo de Documento
+            if (cmbTipoDocumento.SelectedIndex < 0)
+            {
+                lblErrorTipo.Visible = true;
+                valido = false;
+            }
+            else
+            {
+                lblErrorTipo.Visible = false;
+            }
+
+            // Validación de Fecha (no puede ser fecha futura)
+            if (dtpFechaRecepcion.Value.Date > DateTime.Now.Date)
+            {
+                lblErrorFecha.Visible = true;
+                valido = false;
+            }
+            else
+            {
+                lblErrorFecha.Visible = false;
+            }
+
+            // Validación de Motivo
+            string motivo = textMotivo.Text.Trim();
+            if (string.IsNullOrWhiteSpace(motivo) || motivo.Length < 10)
+            {
+                lblErrorMotivo.Visible = true;
+                valido = false;
+            }
+            else
+            {
+                lblErrorMotivo.Visible = false;
+            }
+
+            return valido;
+        }
+
         void LimpiarCampos()
         {
             textSolicitante.Clear();
             cmbTipoDocumento.SelectedIndex = -1;
             dtpFechaRecepcion.Value = DateTime.Now;
             textMotivo.Clear();
+
+            // Ocultar etiquetas de error
+            lblErrorSolicitante.Visible = false;
+            lblErrorTipo.Visible = false;
+            lblErrorFecha.Visible = false;
+            lblErrorMotivo.Visible = false;
         }
 
         void RegistrarExpediente()
@@ -59,7 +138,7 @@ namespace MesaDePartesDigital
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (AlmacenExpedientes.ValidarCampos(textSolicitante.Text, cmbTipoDocumento.SelectedIndex, textMotivo.Text, this))
+            if (ValidarCamposConEtiquetas())
             {
                 RegistrarExpediente();
             }
