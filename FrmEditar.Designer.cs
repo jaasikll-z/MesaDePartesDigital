@@ -30,10 +30,9 @@ namespace MesaDePartesDigital
         {
             lblTitulo = new Label();
             lblCodigo = new Label();
-            textCodigo = new TextBox();
             lblSolicitante = new Label();
             lblErrorSolicitante = new Label();
-            textSolicitante = new TextBox();
+            txtSolicitante = new TextBox();
             lblTipoDocumento = new Label();
             lblErrorTipo = new Label();
             cmbTipoDocumento = new ComboBox();
@@ -42,9 +41,10 @@ namespace MesaDePartesDigital
             dtpFechaRecepcion = new DateTimePicker();
             lblMotivo = new Label();
             lblErrorMotivo = new Label();
-            textMotivo = new TextBox();
+            txtMotivo = new TextBox();
             btnGuardar = new Button();
             btnCancelar = new Button();
+            lblCodigoExpediente = new Label();
             SuspendLayout();
             // 
             // lblTitulo
@@ -69,17 +69,6 @@ namespace MesaDePartesDigital
             lblCodigo.TabIndex = 1;
             lblCodigo.Text = "Código de expediente:";
             // 
-            // textCodigo
-            // 
-            textCodigo.BackColor = SystemColors.ControlLight;
-            textCodigo.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            textCodigo.Location = new Point(208, 52);
-            textCodigo.Name = "textCodigo";
-            textCodigo.ReadOnly = true;
-            textCodigo.Size = new Size(244, 26);
-            textCodigo.TabIndex = 2;
-            textCodigo.TabStop = false;
-            // 
             // lblSolicitante
             // 
             lblSolicitante.AutoSize = true;
@@ -103,13 +92,13 @@ namespace MesaDePartesDigital
             lblErrorSolicitante.Text = "Ingrese un nombre válido (mín. 3 letras).";
             lblErrorSolicitante.Visible = false;
             // 
-            // textSolicitante
+            // txtSolicitante
             // 
-            textSolicitante.Font = new Font("Times New Roman", 12F);
-            textSolicitante.Location = new Point(208, 92);
-            textSolicitante.Name = "textSolicitante";
-            textSolicitante.Size = new Size(244, 26);
-            textSolicitante.TabIndex = 4;
+            txtSolicitante.Font = new Font("Times New Roman", 12F);
+            txtSolicitante.Location = new Point(208, 92);
+            txtSolicitante.Name = "txtSolicitante";
+            txtSolicitante.Size = new Size(244, 26);
+            txtSolicitante.TabIndex = 4;
             // 
             // lblTipoDocumento
             // 
@@ -201,15 +190,15 @@ namespace MesaDePartesDigital
             lblErrorMotivo.Text = "Describa el motivo (mínimo 10 caracteres).";
             lblErrorMotivo.Visible = false;
             // 
-            // textMotivo
+            // txtMotivo
             // 
-            textMotivo.Font = new Font("Times New Roman", 12F);
-            textMotivo.Location = new Point(24, 265);
-            textMotivo.Multiline = true;
-            textMotivo.Name = "textMotivo";
-            textMotivo.ScrollBars = ScrollBars.Vertical;
-            textMotivo.Size = new Size(428, 110);
-            textMotivo.TabIndex = 10;
+            txtMotivo.Font = new Font("Times New Roman", 12F);
+            txtMotivo.Location = new Point(24, 265);
+            txtMotivo.Multiline = true;
+            txtMotivo.Name = "txtMotivo";
+            txtMotivo.ScrollBars = ScrollBars.Vertical;
+            txtMotivo.Size = new Size(428, 110);
+            txtMotivo.TabIndex = 10;
             // 
             // btnGuardar
             // 
@@ -237,27 +226,38 @@ namespace MesaDePartesDigital
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
             // 
+            // lblCodigoExpediente
+            // 
+            lblCodigoExpediente.AutoSize = true;
+            lblCodigoExpediente.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCodigoExpediente.ForeColor = SystemColors.ControlDarkDark;
+            lblCodigoExpediente.Location = new Point(208, 53);
+            lblCodigoExpediente.Name = "lblCodigoExpediente";
+            lblCodigoExpediente.Size = new Size(84, 22);
+            lblCodigoExpediente.TabIndex = 17;
+            lblCodigoExpediente.Text = "EXP-001";
+            // 
             // FrmEditar
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Info;
             ClientSize = new Size(480, 485);
+            Controls.Add(lblCodigoExpediente);
             Controls.Add(lblErrorMotivo);
             Controls.Add(lblErrorFecha);
             Controls.Add(lblErrorTipo);
             Controls.Add(lblErrorSolicitante);
             Controls.Add(btnCancelar);
             Controls.Add(btnGuardar);
-            Controls.Add(textMotivo);
+            Controls.Add(txtMotivo);
             Controls.Add(lblMotivo);
             Controls.Add(dtpFechaRecepcion);
             Controls.Add(lblFechaRecepcion);
             Controls.Add(cmbTipoDocumento);
             Controls.Add(lblTipoDocumento);
-            Controls.Add(textSolicitante);
+            Controls.Add(txtSolicitante);
             Controls.Add(lblSolicitante);
-            Controls.Add(textCodigo);
             Controls.Add(lblCodigo);
             Controls.Add(lblTitulo);
             Font = new Font("Times New Roman", 12F, FontStyle.Bold);
@@ -276,20 +276,20 @@ namespace MesaDePartesDigital
 
         private Label lblTitulo;
         private Label lblCodigo;
-        private TextBox textCodigo;
         private Label lblSolicitante;
-        private TextBox textSolicitante;
+        private TextBox txtSolicitante;
         private Label lblTipoDocumento;
         private ComboBox cmbTipoDocumento;
         private Label lblFechaRecepcion;
         private DateTimePicker dtpFechaRecepcion;
         private Label lblMotivo;
-        private TextBox textMotivo;
+        private TextBox txtMotivo;
         private Button btnGuardar;
         private Button btnCancelar;
         private Label lblErrorSolicitante;
         private Label lblErrorTipo;
         private Label lblErrorFecha;
         private Label lblErrorMotivo;
+        private Label lblCodigoExpediente;
     }
 }

@@ -1,16 +1,18 @@
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace MesaDePartesDigital
 {
     public partial class FrmConsultar : Form
     {
+        #region Constructor
         public FrmConsultar()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Métodos Auxiliares
         void CargarDatos()
         {
             dgvExpedientes.Rows.Clear();
@@ -20,19 +22,16 @@ namespace MesaDePartesDigital
                 dgvExpedientes.Rows.Add(
                     AlmacenExpedientes.codigos[i],
                     AlmacenExpedientes.solicitantes[i],
-                    AlmacenExpedientes.tiposDoc[i],
+                    AlmacenExpedientes.tiposDocumento[i],
                     AlmacenExpedientes.fechas[i],
                     AlmacenExpedientes.motivos[i]
                 );
             }
+
+            dgvExpedientes.ClearSelection();
         }
 
-        private void FrmConsultar_Load(object sender, EventArgs e)
-        {
-            CargarDatos();
-        }
-
-        private void btnEditar_Click(object sender, EventArgs e)
+        void AbrirEdicionExpediente()
         {
             if (dgvExpedientes.CurrentRow == null || dgvExpedientes.CurrentRow.Index < 0)
             {
@@ -53,10 +52,23 @@ namespace MesaDePartesDigital
             formularioEditar.ShowDialog();
             CargarDatos();
         }
+        #endregion
+
+        #region Eventos
+        private void FrmConsultar_Load(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            AbrirEdicionExpediente();
+        }
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        #endregion
     }
 }

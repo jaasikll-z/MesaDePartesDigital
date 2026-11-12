@@ -1,117 +1,55 @@
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace MesaDePartesDigital
 {
     public partial class FrmEditar : Form
     {
+        #region Atributos
         int indice;
+        #endregion
 
+        #region Constructor
         public FrmEditar(int indiceExpediente)
         {
             InitializeComponent();
+            this.AcceptButton = btnGuardar;
+            this.CancelButton = btnCancelar;
             indice = indiceExpediente;
             CargarDatos();
         }
+        #endregion
 
+        #region Métodos Auxiliares
         void CargarDatos()
         {
-            textCodigo.Text = AlmacenExpedientes.codigos[indice];
-            textSolicitante.Text = AlmacenExpedientes.solicitantes[indice];
-            cmbTipoDocumento.Text = AlmacenExpedientes.tiposDoc[indice];
+            lblCodigoExpediente.Text = AlmacenExpedientes.codigos[indice];
+            txtSolicitante.Text = AlmacenExpedientes.solicitantes[indice];
+            cmbTipoDocumento.Text = AlmacenExpedientes.tiposDocumento[indice];
 
-            if (DateTime.TryParse(AlmacenExpedientes.fechas[indice], out DateTime fecha))
-            {
-                dtpFechaRecepcion.Value = fecha;
-            }
-            else
-            {
-                dtpFechaRecepcion.Value = DateTime.Now;
-            }
+            dtpFechaRecepcion.Value = DateTime.TryParse(AlmacenExpedientes.fechas[indice], out DateTime fecha)
+                ? fecha
+                : DateTime.Now;
 
-            textMotivo.Text = AlmacenExpedientes.motivos[indice];
+            txtMotivo.Text = AlmacenExpedientes.motivos[indice];
         }
 
-        bool EsTextoValido(string texto)
+        bool ValidarCampos()
         {
-            foreach (char c in texto)
-            {
-                // Solo permitimos letras, espacios y puntos (ej. para entidades como I.E. o Lic.)
-                if (!char.IsLetter(c) && !char.IsWhiteSpace(c) && c != '.')
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        bool ValidarCamposConEtiquetas()
-        {
-            bool valido = true;
-
-            // Validación de Solicitante
-            string solicitante = textSolicitante.Text.Trim();
-            if (string.IsNullOrWhiteSpace(solicitante) || solicitante.Length < 3)
-            {
-                lblErrorSolicitante.Text = "Ingrese un nombre válido (mín. 3 letras).";
-                lblErrorSolicitante.Visible = true;
-                valido = false;
-            }
-            else if (!EsTextoValido(solicitante))
-            {
-                lblErrorSolicitante.Text = "Solo se permiten letras y espacios.";
-                lblErrorSolicitante.Visible = true;
-                valido = false;
-            }
-            else
-            {
-                lblErrorSolicitante.Visible = false;
-            }
-
-            // Validación de Tipo de Documento
-            if (cmbTipoDocumento.SelectedIndex < 0)
-            {
-                lblErrorTipo.Visible = true;
-                valido = false;
-            }
-            else
-            {
-                lblErrorTipo.Visible = false;
-            }
-
-            // Validación de Fecha (no puede ser fecha futura)
-            if (dtpFechaRecepcion.Value.Date > DateTime.Now.Date)
-            {
-                lblErrorFecha.Visible = true;
-                valido = false;
-            }
-            else
-            {
-                lblErrorFecha.Visible = false;
-            }
-
-            // Validación de Motivo
-            string motivo = textMotivo.Text.Trim();
-            if (string.IsNullOrWhiteSpace(motivo) || motivo.Length < 10)
-            {
-                lblErrorMotivo.Visible = true;
-                valido = false;
-            }
-            else
-            {
-                lblErrorMotivo.Visible = false;
-            }
-
-            return valido;
+            return Validador.ValidarExpediente(
+                txtSolicitante.Text, lblErrorSolicitante,
+                cmbTipoDocumento.SelectedIndex, lblErrorTipo,
+                dtpFechaRecepcion.Value, lblErrorFecha,
+                txtMotivo.Text, lblErrorMotivo
+            );
         }
 
         void GuardarCambios()
         {
-            AlmacenExpedientes.solicitantes[indice] = textSolicitante.Text.Trim();
-            AlmacenExpedientes.tiposDoc[indice] = cmbTipoDocumento.Text;
+            AlmacenExpedientes.solicitantes[indice] = txtSolicitante.Text.Trim();
+            AlmacenExpedientes.tiposDocumento[indice] = cmbTipoDocumento.Text;
             AlmacenExpedientes.fechas[indice] = dtpFechaRecepcion.Value.ToString("dd/MM/yyyy");
-            AlmacenExpedientes.motivos[indice] = textMotivo.Text.Trim();
+            AlmacenExpedientes.motivos[indice] = txtMotivo.Text.Trim();
             AlmacenExpedientes.cambiosPendientes = true;
 
             MessageBox.Show(
@@ -122,10 +60,12 @@ namespace MesaDePartesDigital
 
             this.Close();
         }
+        #endregion
 
+        #region Eventos
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (ValidarCamposConEtiquetas())
+            if (ValidarCampos())
             {
                 GuardarCambios();
             }
@@ -135,5 +75,6 @@ namespace MesaDePartesDigital
         {
             this.Close();
         }
+        #endregion
     }
 }

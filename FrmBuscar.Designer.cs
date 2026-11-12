@@ -29,7 +29,7 @@ namespace MesaDePartesDigital
         private void InitializeComponent()
         {
             lblNumero = new Label();
-            textBuscar = new TextBox();
+            txtBuscar = new TextBox();
             btnBuscar = new Button();
             lblResultado = new Label();
             lblDatosExpediente = new Label();
@@ -48,13 +48,13 @@ namespace MesaDePartesDigital
             lblNumero.TabIndex = 0;
             lblNumero.Text = "Código de expediente:";
             // 
-            // textBuscar
+            // txtBuscar
             // 
-            textBuscar.Font = new Font("Times New Roman", 12F);
-            textBuscar.Location = new Point(29, 93);
-            textBuscar.Name = "textBuscar";
-            textBuscar.Size = new Size(193, 26);
-            textBuscar.TabIndex = 1;
+            txtBuscar.Font = new Font("Times New Roman", 12F);
+            txtBuscar.Location = new Point(29, 93);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new Size(193, 26);
+            txtBuscar.TabIndex = 1;
             // 
             // btnBuscar
             // 
@@ -126,7 +126,7 @@ namespace MesaDePartesDigital
             Controls.Add(lblDatosExpediente);
             Controls.Add(lblResultado);
             Controls.Add(btnBuscar);
-            Controls.Add(textBuscar);
+            Controls.Add(txtBuscar);
             Controls.Add(lblNumero);
             Name = "FrmBuscar";
             StartPosition = FormStartPosition.CenterScreen;
@@ -138,7 +138,7 @@ namespace MesaDePartesDigital
         #endregion
 
         private Label lblNumero;
-        private TextBox textBuscar;
+        private TextBox txtBuscar;
         private Button btnBuscar;
         private Label lblResultado;
         private Label lblDatosExpediente;

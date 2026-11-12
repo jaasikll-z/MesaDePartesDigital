@@ -30,7 +30,7 @@ namespace MesaDePartesDigital
         {
             lblSolicitante = new Label();
             lblErrorSolicitante = new Label();
-            textSolicitante = new TextBox();
+            txtSolicitante = new TextBox();
             lblTipoDocumento = new Label();
             lblErrorTipo = new Label();
             cmbTipoDocumento = new ComboBox();
@@ -39,7 +39,7 @@ namespace MesaDePartesDigital
             dtpFechaRecepcion = new DateTimePicker();
             lblMotivo = new Label();
             lblErrorMotivo = new Label();
-            textMotivo = new TextBox();
+            txtMotivo = new TextBox();
             btnRegistrar = new Button();
             btnLimpiar = new Button();
             btnVolver = new Button();
@@ -70,14 +70,14 @@ namespace MesaDePartesDigital
             lblErrorSolicitante.Text = "Ingrese un nombre válido (mín. 3 caracteres).";
             lblErrorSolicitante.Visible = false;
             // 
-            // textSolicitante
+            // txtSolicitante
             // 
-            textSolicitante.Font = new Font("Times New Roman", 12F);
-            textSolicitante.Location = new Point(209, 65);
-            textSolicitante.Margin = new Padding(4, 3, 4, 3);
-            textSolicitante.Name = "textSolicitante";
-            textSolicitante.Size = new Size(244, 26);
-            textSolicitante.TabIndex = 2;
+            txtSolicitante.Font = new Font("Times New Roman", 12F);
+            txtSolicitante.Location = new Point(209, 65);
+            txtSolicitante.Margin = new Padding(4, 3, 4, 3);
+            txtSolicitante.Name = "txtSolicitante";
+            txtSolicitante.Size = new Size(244, 26);
+            txtSolicitante.TabIndex = 2;
             // 
             // lblTipoDocumento
             // 
@@ -174,16 +174,16 @@ namespace MesaDePartesDigital
             lblErrorMotivo.Text = "Describa el motivo (mínimo 10 caracteres).";
             lblErrorMotivo.Visible = false;
             // 
-            // textMotivo
+            // txtMotivo
             // 
-            textMotivo.Font = new Font("Times New Roman", 12F);
-            textMotivo.Location = new Point(25, 252);
-            textMotivo.Margin = new Padding(4, 3, 4, 3);
-            textMotivo.Multiline = true;
-            textMotivo.Name = "textMotivo";
-            textMotivo.ScrollBars = ScrollBars.Vertical;
-            textMotivo.Size = new Size(426, 95);
-            textMotivo.TabIndex = 8;
+            txtMotivo.Font = new Font("Times New Roman", 12F);
+            txtMotivo.Location = new Point(25, 252);
+            txtMotivo.Margin = new Padding(4, 3, 4, 3);
+            txtMotivo.Multiline = true;
+            txtMotivo.Name = "txtMotivo";
+            txtMotivo.ScrollBars = ScrollBars.Vertical;
+            txtMotivo.Size = new Size(426, 95);
+            txtMotivo.TabIndex = 8;
             // 
             // btnRegistrar
             // 
@@ -234,9 +234,9 @@ namespace MesaDePartesDigital
             lblTitulo.ForeColor = SystemColors.HotTrack;
             lblTitulo.Location = new Point(96, 22);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(299, 22);
+            lblTitulo.Size = new Size(285, 22);
             lblTitulo.TabIndex = 0;
-            lblTitulo.Text = "REGISTRO DE EXPENDIENTES";
+            lblTitulo.Text = "REGISTRO DE EXPEDIENTES";
             // 
             // FrmRegistrar
             // 
@@ -252,13 +252,13 @@ namespace MesaDePartesDigital
             Controls.Add(btnVolver);
             Controls.Add(btnLimpiar);
             Controls.Add(btnRegistrar);
-            Controls.Add(textMotivo);
+            Controls.Add(txtMotivo);
             Controls.Add(lblMotivo);
             Controls.Add(dtpFechaRecepcion);
             Controls.Add(lblFechaRecepcion);
             Controls.Add(cmbTipoDocumento);
             Controls.Add(lblTipoDocumento);
-            Controls.Add(textSolicitante);
+            Controls.Add(txtSolicitante);
             Controls.Add(lblSolicitante);
             Font = new Font("Times New Roman", 12F, FontStyle.Bold);
             ForeColor = SystemColors.HotTrack;
@@ -273,13 +273,13 @@ namespace MesaDePartesDigital
         #endregion
 
         private Label lblSolicitante;
-        private TextBox textSolicitante;
+        private TextBox txtSolicitante;
         private Label lblTipoDocumento;
         private ComboBox cmbTipoDocumento;
         private Label lblFechaRecepcion;
         private DateTimePicker dtpFechaRecepcion;
         private Label lblMotivo;
-        private TextBox textMotivo;
+        private TextBox txtMotivo;
         private Button btnRegistrar;
         private Button btnLimpiar;
         private Button btnVolver;

@@ -1,97 +1,35 @@
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace MesaDePartesDigital
 {
     public partial class FrmRegistrar : Form
     {
+        #region Constructor
         public FrmRegistrar()
         {
             InitializeComponent();
         }
+        #endregion
 
-        bool EsTextoValido(string texto)
+        #region Métodos de Validación y Registro
+        bool ValidarCampos()
         {
-            foreach (char c in texto)
-            {
-                // Solo permitimos letras, espacios y puntos (ej. para entidades como I.E. o Lic.)
-                if (!char.IsLetter(c) && !char.IsWhiteSpace(c) && c != '.')
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        bool ValidarCamposConEtiquetas()
-        {
-            bool valido = true;
-
-            // Validación de Solicitante
-            string solicitante = textSolicitante.Text.Trim();
-            if (string.IsNullOrWhiteSpace(solicitante) || solicitante.Length < 3)
-            {
-                lblErrorSolicitante.Text = "Ingrese un nombre válido (mín. 3 letras).";
-                lblErrorSolicitante.Visible = true;
-                valido = false;
-            }
-            else if (!EsTextoValido(solicitante))
-            {
-                lblErrorSolicitante.Text = "Solo se permiten letras y espacios.";
-                lblErrorSolicitante.Visible = true;
-                valido = false;
-            }
-            else
-            {
-                lblErrorSolicitante.Visible = false;
-            }
-
-            // Validación de Tipo de Documento
-            if (cmbTipoDocumento.SelectedIndex < 0)
-            {
-                lblErrorTipo.Visible = true;
-                valido = false;
-            }
-            else
-            {
-                lblErrorTipo.Visible = false;
-            }
-
-            // Validación de Fecha (no puede ser fecha futura)
-            if (dtpFechaRecepcion.Value.Date > DateTime.Now.Date)
-            {
-                lblErrorFecha.Visible = true;
-                valido = false;
-            }
-            else
-            {
-                lblErrorFecha.Visible = false;
-            }
-
-            // Validación de Motivo
-            string motivo = textMotivo.Text.Trim();
-            if (string.IsNullOrWhiteSpace(motivo) || motivo.Length < 10)
-            {
-                lblErrorMotivo.Visible = true;
-                valido = false;
-            }
-            else
-            {
-                lblErrorMotivo.Visible = false;
-            }
-
-            return valido;
+            return Validador.ValidarExpediente(
+                txtSolicitante.Text, lblErrorSolicitante,
+                cmbTipoDocumento.SelectedIndex, lblErrorTipo,
+                dtpFechaRecepcion.Value, lblErrorFecha,
+                txtMotivo.Text, lblErrorMotivo
+            );
         }
 
         void LimpiarCampos()
         {
-            textSolicitante.Clear();
+            txtSolicitante.Clear();
             cmbTipoDocumento.SelectedIndex = -1;
             dtpFechaRecepcion.Value = DateTime.Now;
-            textMotivo.Clear();
+            txtMotivo.Clear();
 
-            // Ocultar etiquetas de error
             lblErrorSolicitante.Visible = false;
             lblErrorTipo.Visible = false;
             lblErrorFecha.Visible = false;
@@ -100,34 +38,24 @@ namespace MesaDePartesDigital
 
         void RegistrarExpediente()
         {
-            if (AlmacenExpedientes.cantidad >= AlmacenExpedientes.MAX)
+            if (AlmacenExpedientes.cantidad >= AlmacenExpedientes.capacidadMaxima)
             {
                 MessageBox.Show(
                     "Error: Capacidad máxima de almacenamiento alcanzada (" + 
-                    AlmacenExpedientes.MAX + 
+                    AlmacenExpedientes.capacidadMaxima + 
                     " registros).", "Aviso", 
                     MessageBoxButtons.OK, 
                     MessageBoxIcon.Warning);
                 return;
             }
 
-            // Buscamos el numero mas alto para generar el siguiente codigo
-            int mayor = 0;
-            for (int i = 0; i < AlmacenExpedientes.cantidad; i++)
-            {
-                int num = AlmacenExpedientes.ExtraerNumero(AlmacenExpedientes.codigos[i]);
-                if (num > mayor)
-                {
-                    mayor = num;
-                }
-            }
-            string nuevoCodigo = AlmacenExpedientes.FormatearCodigo(mayor + 1);
+            string nuevoCodigo = AlmacenExpedientes.FormatearCodigo(AlmacenExpedientes.cantidad + 1);
 
             AlmacenExpedientes.codigos[AlmacenExpedientes.cantidad] = nuevoCodigo;
-            AlmacenExpedientes.solicitantes[AlmacenExpedientes.cantidad] = textSolicitante.Text.Trim();
-            AlmacenExpedientes.tiposDoc[AlmacenExpedientes.cantidad] = cmbTipoDocumento.Text;
+            AlmacenExpedientes.solicitantes[AlmacenExpedientes.cantidad] = txtSolicitante.Text.Trim();
+            AlmacenExpedientes.tiposDocumento[AlmacenExpedientes.cantidad] = cmbTipoDocumento.Text;
             AlmacenExpedientes.fechas[AlmacenExpedientes.cantidad] = dtpFechaRecepcion.Value.ToString("dd/MM/yyyy");
-            AlmacenExpedientes.motivos[AlmacenExpedientes.cantidad] = textMotivo.Text.Trim();
+            AlmacenExpedientes.motivos[AlmacenExpedientes.cantidad] = txtMotivo.Text.Trim();
             AlmacenExpedientes.cantidad++;
             AlmacenExpedientes.cambiosPendientes = true;
 
@@ -135,10 +63,12 @@ namespace MesaDePartesDigital
 
             LimpiarCampos();
         }
+        #endregion
 
+        #region Eventos
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if (ValidarCamposConEtiquetas())
+            if (ValidarCampos())
             {
                 RegistrarExpediente();
             }
@@ -153,5 +83,6 @@ namespace MesaDePartesDigital
         {
             this.Close();
         }
+        #endregion
     }
 }

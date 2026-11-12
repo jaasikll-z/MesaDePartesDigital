@@ -34,8 +34,11 @@ namespace MesaDePartesDigital
             msMenuPrincipal = new MenuStrip();
             menuArchivo = new ToolStripMenuItem();
             itemGuardar = new ToolStripMenuItem();
+            itemExportar = new ToolStripMenuItem();
+            itemVerExpedientes = new ToolStripMenuItem();
             itemSalir = new ToolStripMenuItem();
             menuAyuda = new ToolStripMenuItem();
+            itemManualUsuario = new ToolStripMenuItem();
             itemAcercaDe = new ToolStripMenuItem();
             lblTitulo = new Label();
             msMenuPrincipal.SuspendLayout();
@@ -91,7 +94,7 @@ namespace MesaDePartesDigital
             // 
             // menuArchivo
             // 
-            menuArchivo.DropDownItems.AddRange(new ToolStripItem[] { itemGuardar, itemSalir });
+            menuArchivo.DropDownItems.AddRange(new ToolStripItem[] { itemGuardar, itemExportar, itemVerExpedientes, itemSalir });
             menuArchivo.Name = "menuArchivo";
             menuArchivo.Size = new Size(60, 20);
             menuArchivo.Text = "Archivo";
@@ -99,28 +102,50 @@ namespace MesaDePartesDigital
             // itemGuardar
             // 
             itemGuardar.Name = "itemGuardar";
-            itemGuardar.Size = new Size(116, 22);
+            itemGuardar.Size = new Size(214, 22);
             itemGuardar.Text = "Guardar";
             itemGuardar.Click += itemGuardar_Click;
+            // 
+            // itemExportar
+            // 
+            itemExportar.Name = "itemExportar";
+            itemExportar.Size = new Size(214, 22);
+            itemExportar.Text = "Exportar reporte";
+            itemExportar.Click += itemExportar_Click;
+            // 
+            // itemVerExpedientes
+            // 
+            itemVerExpedientes.Name = "itemVerExpedientes";
+            itemVerExpedientes.Size = new Size(214, 22);
+            itemVerExpedientes.Text = "Ver archivo de expedientes";
+            itemVerExpedientes.Click += itemVerExpedientes_Click;
             // 
             // itemSalir
             // 
             itemSalir.Name = "itemSalir";
-            itemSalir.Size = new Size(116, 22);
+            itemSalir.Size = new Size(214, 22);
             itemSalir.Text = "Salir";
             itemSalir.Click += itemSalir_Click;
             // 
             // menuAyuda
             // 
-            menuAyuda.DropDownItems.AddRange(new ToolStripItem[] { itemAcercaDe });
+            menuAyuda.DropDownItems.AddRange(new ToolStripItem[] { itemManualUsuario, itemAcercaDe });
             menuAyuda.Name = "menuAyuda";
             menuAyuda.Size = new Size(53, 20);
             menuAyuda.Text = "Ayuda";
             // 
+            // itemManualUsuario
+            // 
+            itemManualUsuario.Name = "itemManualUsuario";
+            itemManualUsuario.ShortcutKeys = Keys.F1;
+            itemManualUsuario.Size = new Size(191, 22);
+            itemManualUsuario.Text = "Manual de usuario";
+            itemManualUsuario.Click += itemManualUsuario_Click;
+            // 
             // itemAcercaDe
             // 
             itemAcercaDe.Name = "itemAcercaDe";
-            itemAcercaDe.Size = new Size(126, 22);
+            itemAcercaDe.Size = new Size(191, 22);
             itemAcercaDe.Text = "Acerca de";
             itemAcercaDe.Click += itemAcercaDe_Click;
             // 
@@ -165,8 +190,11 @@ namespace MesaDePartesDigital
         private ToolStripMenuItem menuArchivo;
         private ToolStripMenuItem itemGuardar;
         private ToolStripMenuItem itemSalir;
+        private ToolStripMenuItem itemExportar;
         private ToolStripMenuItem menuAyuda;
         private ToolStripMenuItem itemAcercaDe;
+        private ToolStripMenuItem itemVerExpedientes;
+        private ToolStripMenuItem itemManualUsuario;
         private Label lblTitulo;
     }
 }
